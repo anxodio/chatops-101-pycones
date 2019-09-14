@@ -1,0 +1,25 @@
+name: Deploy to Github pages
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Install reveal-md
+        run: npm install -g reveal-md
+        env:
+          CI: true
+      - name: Build the static presentation
+        run: reveal-md slides.md --static public
+      - name: Deploy pages
+        uses: maxheld83/ghpages@v0.2.1
+        env:
+          BUILD_DIR: public/
+          GH_PAT: ${{ secrets.GH_PAT }}
