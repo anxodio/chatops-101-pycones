@@ -291,7 +291,7 @@ class RestartSkill(Skill):
 
 # Thanks! 🤗
 
-Any Questions?
+Any questions?
 
 _Keep in touch -> [@anxodio](https://twitter.com/anxodio)_
 
