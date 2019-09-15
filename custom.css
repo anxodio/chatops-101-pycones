@@ -1,0 +1,15 @@
+.small-text {
+  font-size: 0.5em;
+}
+
+p.holaluz-jobs {
+  margin-top: 3em;
+}
+
+p.holaluz-jobs > img {
+  margin: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+  height: 1em;
+}

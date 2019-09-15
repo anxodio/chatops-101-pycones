@@ -1,5 +1,6 @@
 {
   "title": "Chatops 101 with opsdroid",
   "theme": "league",
-  "highlightTheme": "monokai-sublime"
+  "highlightTheme": "monokai-sublime",
+  "css": ["custom.css"]
 }

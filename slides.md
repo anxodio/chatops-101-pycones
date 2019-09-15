@@ -4,7 +4,7 @@
 
 ---
 
-## Hello! 🤗
+## Hello! 👋
 
 I am Àngel, a.k.a. [@anxodio](https://twitter.com/anxodio)
 
@@ -18,7 +18,7 @@ _Python Developer / Data Engineer at [@HolaluzEng](https://twitter.com/holaluzen
 
 _Abhinav Jain, works at Accenture and sometimes answers questions like this on Quora._
 
-<!-- .element: style="font-size:0.5em" -->
+<!-- .element: class="small-text" -->
 
 Note:
 Que quiere decir Chatops? Es la conjunción de Chat y Operaciones, y lo que hace
@@ -73,19 +73,19 @@ They’re modular and can be shared as plugins between differents opsdroid insta
 ```python
 class HelloSkill(Skill):
 
-    @match_regex(r'hi|hello|hey|hallo')
-    async def hello(self, message: Message):
-        text = random.choice(
-            ["Hi {}", "Hello {}", "Hey {}"]
-        ).format(message.user)
-        await message.respond(text)
+  @match_regex(r'hi|hello|hey|hallo')
+  async def hello(self, message: Message):
+    text = random.choice(
+      ["Hi {}", "Hello {}", "Hey {}"]
+    ).format(message.user)
+    await message.respond(text)
 
-    @match_regex(r'bye( bye)?|see y(a|ou)|au revoir|I(\')?M off')
-    async def goodbye(self, message: Message):
-        text = random.choice(
-            ["Bye {}", "See you {}", "Au revoir {}"]
-        ).format(message.user)
-        await message.respond(text)
+  @match_regex(r'bye( bye)?|see y(a|ou)|au revoir|I(\')?M off')
+  async def goodbye(self, message: Message):
+    text = random.choice(
+      ["Bye {}", "See you {}", "Au revoir {}"]
+    ).format(message.user)
+    await message.respond(text)
 ```
 
 ---
@@ -104,10 +104,10 @@ _Regex, Parse_Format, Crontab, Webhook, Always and NLU parsers_
 ```python
 class MyNameSkill(Skill):
 
-    @match_regex(r'my name is (?P<name>\w+)')
-    async def my_name_is(self, message: Message):
-        name = message.regex.group('name')
-        await message.respond(f'Wow, {name} is a nice name!')
+  @match_regex(r'my name is (?P<name>\w+)')
+  async def my_name_is(self, message: Message):
+    name = message.regex.group('name')
+    await message.respond(f'Wow, {name} is a nice name!')
 ```
 
 <!-- .element: class="fragment fade-in-then-semi-out" -->
@@ -115,10 +115,10 @@ class MyNameSkill(Skill):
 ```python
 class MyNameSkill(Skill):
 
-    @match_parse('my name is {name}')
-    async def my_name_is(self, message: Message):
-        name = message.parse_result['name']
-        await message.respond(f'Wow, {name} is a nice name!')
+  @match_parse('my name is {name}')
+  async def my_name_is(self, message: Message):
+    name = message.parse_result['name']
+    await message.respond(f'Wow, {name} is a nice name!')
 ```
 
 <!-- .element: class="fragment fade-in-then-semi-out" -->
@@ -133,14 +133,13 @@ class ClockSkill(Skill):
     @match_crontab('0 * * * *')
     @match_regex(r'what time is it\?')
     async def speaking_clock(self, message: Message):
-        connector = self.opsdroid.default_connector
-        default_room = connector.default_room
+      connector = self.opsdroid.default_connector
+      default_room = connector.default_room
 
-        if message is None:
-            message = Message('', None, default_room, connector)
+      if message is None:
+        message = Message('', None, default_room, connector)
 
-
-        await message.respond(strftime("It's %H:%M", gmtime()))
+      await message.respond(strftime("It's %H:%M", gmtime()))
 ```
 
 ---
@@ -179,10 +178,10 @@ _constrain_rooms, constrain_users, constrain_connectors_
 ```python
 class MySkill(Skill):
 
-    @match_regex(r'hi')
-    @constrain_users(['alice', 'bob'])
-    async def my_name_is(self, message: Message):
-        await message.respond('Hey')
+  @match_regex(r'hi')
+  @constrain_users(['alice', 'bob'])
+  async def my_name_is(self, message: Message):
+    await message.respond('Hey')
 ```
 
 ---
@@ -212,3 +211,90 @@ Note:
 - Explicar diferentes conectores a la vez
 - Explicar skills oficiales y propias
 - Explicar constraints siempre activas
+
+---
+
+## Yeah, but...
+
+### You said something about NLU?
+
+---
+
+## What the heck is NLU?
+
+> Natural language understanding (NLU) is a branch of artificial intelligence (AI) that uses computer software to understand input made in the form of sentences in text or speech format.
+
+_Margaret Rouse in WhatIs.com_
+
+<!-- .element: class="small-text" -->
+
+---
+
+## NLU parsers
+
+Opsdroid connects with some NLU services:
+
+- **Wit.ai** (Facebook service)
+- **Dialogflow** (Google service)
+- **Luis.AI** (Microsoft service)
+- **Recast.AI** (SAP service)
+- **Rasa** (Open Source)
+
+---
+
+## Wit.AI example
+
+![Wit.AI example](img/wit.gif)
+
+---
+
+## Wit.AI example
+
+A message "_restart production, please!_" is sent to Wit.ai
+
+```json
+{
+  "confidence": 0.783,
+  "intent": "restart",
+  "_text": "restart production, please!",
+  "entities": {
+    "environment": [
+      {
+        "value": "production"
+      }
+    ]
+  }
+}
+```
+
+---
+
+## Wit.AI example
+
+```python
+class RestartSkill(Skill):
+
+  @match_witai('restart')
+  async def restart(self, message: Message):
+    entities = message.witai['entities']
+    environments = entities['environment']
+    if not environments:
+      await message.respond('Please specify an environment.')
+      return
+
+    environment = environments['0']['value']
+    await _do_restart(environment)
+    await message.respond(f'{environment} restarted!.')
+```
+
+---
+
+# Thanks! 🤗
+
+Any Questions?
+
+_Keep in touch -> [@anxodio](https://twitter.com/anxodio)_
+
+![Holaluz](img/holaluz_white.png) is looking for great people like you, join us! [holaluz.com/jobs](http://holaluz.com/jobs)
+
+<!-- .element: class="small-text holaluz-jobs" -->
