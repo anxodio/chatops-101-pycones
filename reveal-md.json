@@ -1,3 +1,5 @@
 {
-  "theme": "league"
+  "title": "Chatops 101 with opsdroid",
+  "theme": "league",
+  "highlightTheme": "monokai-sublime"
 }
