@@ -18,7 +18,8 @@ _Python Developer / Data Engineer at [@HolaluzEng](https://twitter.com/holaluzen
 Note:
 Desarrolador de Python orientado a datos.
 Comercializadora eléctrica que busca conectar a las personas con al energia verde.
-Energia 100% renovable y fuerte apuesta por el autoconsumo.
+Energia 100% renovable.
+Fuerte apuesta por el autoconsumo.
 
 -> Vamos al primer palabro
 
@@ -33,11 +34,10 @@ _Abhinav Jain, works at Accenture and sometimes answers questions like this on Q
 <!-- .element: class="small-text" -->
 
 Note:
-Que quiere decir Chatops? Es la conjunción de Chat y Operaciones, y lo que hace
-es integrar procesos de desarrollo y operaciones en las herramientas de chat del equipo.
-Dicho de otra forma, se materializa en la integración de un robot en Slack (o similar)
-que colabora con el equipo y puede hacer deploys, reiniciar cosas, hacer backups,
-levantar máquinas... hasta donde nos llegue la imaginación.
+Conjunción de Chat y Operaciones.
+Integrar procesos de desarrollo y operaciones en las herramientas de chat del equipo.
+Integración de un robot en Slack que colabora con el equipo.
+puede hacer deploys, reiniciar cosas, hacer backups, hasta donde nos llegue la imaginación.
 
 -> Tenemos el primer palabro, nos falta el siguiente.
 
@@ -80,15 +80,13 @@ Extensible: adaptarlo a nuestro caso de uso de forma sencilla
 
 ## Show me more
 
-### Let's see how Opdroid works
+### Let's see how Opsdroid works
 
 Note:
-Vamos a entrar un poco en como funciona.
-El objetivo de la charla no es explicarlo todo en profundidad, sino
-dar unas pinceladas sobre su diseño y uso para que veais lo simple
-que es, os entre el gusanillo y luego en casa os acabeis de mirar la documentación
-y en una hora tengais un bot de prueba funcionando.
-(Los que ya conoceis Chatops, ver otra herramienta que podeis usar)
+Objetivo de la charla no es explicar en profundidad.
+Dar unas pinceladas sobre su diseño y uso.
+Simple, gusanillo, llegar a casa, docu, y en 1 hora POC.
+Si conoceis Chatops, otra herramienta
 
 -> Para ello vamos a hablar de las diferentes piezas que lo componen
 
@@ -132,7 +130,7 @@ class HelloSkill(Skill):
 Note:
 Una clase que hereda de Skill (de opsdroid)
 Cada classe skill puede tener varias funciones para interactuar
-Tienen un decorador para ver cuando ejecutarse (luego lo comento)
+Tienen un decorador para ver cuando ejecutarse
 Las funciones reciben el mensaje y pueden actuar según eso.
 A partir de aquí es Python (llamar a jenkins, AWS, etc.)
 
@@ -149,9 +147,8 @@ _Regex, Parse_Format, Crontab, Webhook, Always and NLU parsers_
 
 Note:
 Relacionan un mensaje con una skill.
-Cada vez que entra un mensaje, pasa por todos los parsers y el que haga
-el mejor match es el que ejecuta su skill.
-Hay bastantes parses actualmente (a parte de que podriamos crear los nuestros)
+Mensaje pasa por todos los parsers y mejor puntuación.
+Hay bastantes parsers actualmente (a parte de que podriamos crear los nuestros)
 
 -> Veamos algunos ejemplos
 
@@ -287,6 +284,7 @@ skills:
 
 Note:
 
+Recordad luego el min-score
 Podriamos añadir BBDD (no hace falta)
 Diferentes conectores a la vez
 Skills oficiales y propias
