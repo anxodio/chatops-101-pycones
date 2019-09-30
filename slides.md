@@ -332,7 +332,7 @@ Rasa además de libre es Python
 
 ## Wit.AI example
 
-![Wit.AI example](img/wit.gif)
+![Wit.AI example](img/wit_demo.gif)
 
 Note:
 Necesito una cita de 30 minutos mañana a las 7.
@@ -342,19 +342,88 @@ Intención, entidades, entrenamiento
 
 ---
 
-## Wit.AI example
+#### Wit.AI restart example
+
+![Wit.AI example](img/wit-1.gif)
+
+Note:
+Creando un intent (no asociado a ninguna palabra en concreto)
+
+---
+
+#### Wit.AI restart example
+
+![Wit.AI example](img/wit-2.gif)
+
+Note:
+Autocompleta el intent
+
+---
+
+#### Wit.AI restart example
+
+![Wit.AI example](img/wit-3.gif)
+
+Note:
+Corregir y enseñar
+
+---
+
+#### Wit.AI restart example
+
+![Wit.AI example](img/wit-4.gif)
+
+Note:
+Autocompleta con restart
+
+---
+
+#### Wit.AI restart example
+
+![Wit.AI example](img/wit-5.gif)
+
+Note:
+Creando una entidad personalizada (environment)
+
+---
+
+#### Wit.AI restart example
+
+![Wit.AI example](img/wit-6.gif)
+
+Note:
+Personalizando entidades (keywords, alias)
+
+---
+
+#### Wit.AI restart example
+
+![Wit.AI example](img/wit-7.gif)
+
+Note:
+Entendiendo por keyword (ejemplo real)
+
+---
+
+## Wit.AI API example
 
 A message "_restart production, please!_" is sent to Wit.ai
 
 ```json
 {
-  "confidence": 0.783,
-  "intent": "restart",
   "_text": "restart production, please!",
   "entities": {
+    "intent": [
+      {
+        "confidence": 0.98,
+        "value": "restart"
+      }
+    ],
     "environment": [
       {
-        "value": "production"
+        "confidence": 1,
+        "value": "production",
+        "type": "value"
       }
     ]
   }
@@ -368,7 +437,7 @@ Respuesta de la API
 
 ---
 
-## Wit.AI example
+## Wit.AI code example
 
 ```python
 class RestartSkill(Skill):
@@ -383,12 +452,12 @@ class RestartSkill(Skill):
 
     environment = environments['0']['value']
     await _do_restart(environment)
-    await message.respond(f'{environment} restarted!.')
+    await message.respond(f'{environment} restarted!')
 ```
 
 Note:
 Parser especial para WitAi (los hay para los demás servicios también)
-do_restart podria ser código que llama a Jenkins o lo que sea.
+do_restart podria ser código que llama a Jenkins.
 
 ---
 
