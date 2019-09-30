@@ -2,6 +2,11 @@
   font-size: 0.5em;
 }
 
+p.x2-image img {
+  height: 200%;
+  width: 200%;
+}
+
 p.holaluz-jobs {
   margin-top: 3em;
 }

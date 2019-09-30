@@ -461,6 +461,26 @@ do_restart podria ser código que llama a Jenkins.
 
 ---
 
+## Sounds cool, doesn't it?
+
+### And it's working in production
+
+Note:
+Como empezo todo, restart de legacy
+
+---
+
+## Geoffrey demo
+
+![Geoffrey](img/slack_demo.gif)
+
+<!-- .element: class="x2-image" -->
+
+Note:
+Deploy, greetings, jenkins
+
+---
+
 # Thanks! 🤗
 
 Any questions?
