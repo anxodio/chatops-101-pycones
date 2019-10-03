@@ -4,24 +4,9 @@
 
 Note:
 Preguntar gente en la sala chatops, montado, opsdroid.
+Mini presentación.
 
--> Antes de explicar que son estos palabros me presento.
-
----
-
-## Hello! 👋
-
-I am Àngel, a.k.a. [@anxodio](https://twitter.com/anxodio)
-
-_Python Developer / Data Engineer at [@HolaluzEng](https://twitter.com/holaluzeng)_
-
-Note:
-Desarrolador de Python orientado a datos.
-Comercializadora eléctrica que busca conectar a las personas con al energia verde.
-Energia 100% renovable.
-Fuerte apuesta por el autoconsumo.
-
--> Vamos al primer palabro
+-> Explicar palabro
 
 ---
 
@@ -215,51 +200,6 @@ _Shell, Websocket, Slack, Telegram, Twitter, Facebook, Github, Ciscospark and Ma
 
 Note:
 Por donde opsdroid habla y escucha.
-
----
-
-## Databases
-
-Database modules connect opsdroid to your chosen database and allow skills
-to store information (outside memory) between messages.
-
-Actual databases:
-_Sqlite, Mongo and Redis_
-
-Note:
-Podemos guardar cosas en memoria, si no queremos que se pierdan si se reinicia
-el servicio podemos usar las bases de datos.
-Caso de uso: cumpleaños
-
----
-
-## Constraints
-
-Constraints are decorators for your skill functions which prevent the skill
-from being called even if it is matched by a matcher.
-
-Actual constraints:
-_constrain_rooms, constrain_users, constrain_connectors_
-
-Note:
-Restricciones a que una skill no se pueda llegar a ejecutar.
-Si no se cumple, directamente no entra en el sistema de puntuación.
-
----
-
-## Constraints
-
-```python
-class MySkill(Skill):
-
-  @match_regex(r'hi')
-  @constrain_users(['alice', 'bob'])
-  async def my_name_is(self, message: Message):
-    await message.respond('Hey')
-```
-
-Note:
-Si hablo yo (angel), nunca me contestará
 
 ---
 
@@ -463,29 +403,18 @@ do_restart podria ser código que llama a Jenkins.
 
 ## Sounds cool, doesn't it?
 
-### And it's working in production
-
 Note:
 Como empezo todo, restart de legacy
 
 ---
 
-## Geoffrey demo
-
-![Geoffrey](img/slack_demo.gif)
-
-<!-- .element: class="x2-image" -->
-
-Note:
-Deploy, greetings, jenkins
-
----
-
 # Thanks! 🤗
 
-Any questions?
+### Any questions?
 
-_Keep in touch -> [@anxodio](https://twitter.com/anxodio)_
+I am Àngel, a.k.a. [@anxodio](https://twitter.com/anxodio)
+
+_Python Developer / Data Engineer at [@HolaluzEng](https://twitter.com/holaluzeng)_
 
 ![Holaluz](img/holaluz_white.png) is looking for great people like you, join us! [holaluz.com/jobs](http://holaluz.com/jobs)
 
